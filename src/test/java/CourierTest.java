@@ -24,7 +24,7 @@ public class CourierTest {
     public void courierCanBeCreatedWithValidData(){
         Courier courier = CourierGenerator.getRandom();
 
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .and()
@@ -41,13 +41,13 @@ public class CourierTest {
     public void courierCanNotBeCreatedWithTheSameName() {
         Courier courier = CourierGenerator.getRandom();
 
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .and()
                 .assertThat()
                 .body("ok", is(true));
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(409)
                 .and()
@@ -59,7 +59,7 @@ public class CourierTest {
     public void courierCanNotBeCreatedWithOutPassword(){
         Courier courier = CourierGenerator.getWithOutPassword();
 
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(400).and()
                 .assertThat()
@@ -75,7 +75,7 @@ public class CourierTest {
     public void courierCanNotBeCreatedWithOutLogin(){
         Courier courier = CourierGenerator.getWithOutLogin();
 
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(400).and()
                 .assertThat()
@@ -91,7 +91,7 @@ public class CourierTest {
     public void courierCanNotBeCreatedWithOutFirsName(){
         Courier courier = CourierGenerator.getWithOutFirstName();
 
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(201).and()
                 .assertThat()

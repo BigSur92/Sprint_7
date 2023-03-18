@@ -24,7 +24,7 @@ public class LoginCourierTest {
     public void courierCanBeLoginWithValidData(){
         Courier courier = CourierGenerator.getRandom();
 
-        courierClient.create(courier)
+        courierClient.createCourier(courier)
                 .assertThat()
                 .statusCode(SC_CREATED)
                 .and()
